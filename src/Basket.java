@@ -1,6 +1,3 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -58,19 +55,5 @@ public class Basket {
                     .toArray();
             return new Basket(products, prices, basketCount);
         }
-    }
-    public void saveJson(File jsonFile) throws IOException {
-        try (PrintWriter out = new PrintWriter(jsonFile)) {
-            Gson gson = new Gson();
-            String json = gson.toJson(this);
-            out.println(json);
-        }
-    }
-
-    public static Basket loadFromJson(File jsonFile) throws IOException {
-        try (Scanner scanner = new Scanner(jsonFile)) {
-            String json = scanner.nextLine();
-            Gson gson = new Gson();
-            return gson.fromJson(json, Basket.class);}
     }
 }
